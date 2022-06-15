@@ -10,7 +10,7 @@ import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
 //css
 import "./Chat.css";
-const ENDPOINT = "localhost:3000";
+const ENDPOINT = "process.env.SERVER";
 var socket;
 export default function Chat() {
   let location = useLocation();
