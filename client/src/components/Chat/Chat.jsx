@@ -10,7 +10,7 @@ import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
 //css
 import "./Chat.css";
-const ENDPOINT = process.env.SERVER || "localhost:3000";
+const ENDPOINT = process.env.REACT_APP_SERVER || "localhost:3000";
 var socket;
 export default function Chat() {
   let location = useLocation();
