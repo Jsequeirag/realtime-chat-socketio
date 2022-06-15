@@ -1,5 +1,6 @@
 import React from "react";
 import "./TextContainer.css";
+import onlineIcon from "../../icons/onlineIcon.png";
 export default function TextContainer({ users }) {
   return (
     <div className="textContainer">
