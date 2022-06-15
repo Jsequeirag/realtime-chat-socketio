@@ -40,7 +40,7 @@ export default function Chat() {
     socket.on("roomData", ({ users }) => {
       setUsers(users);
     });
-  }, []);
+  });
   const sendMessage = (event) => {
     event.preventDefault();
 
