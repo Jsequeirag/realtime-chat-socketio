@@ -8,6 +8,7 @@ import TextContainer from "../TextContainer/TextContainer";
 import Messages from "../Messages/Messages";
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
+import Join from "../Join/Join";
 //css
 import "./Chat.css";
 const ENDPOINT = process.env.REACT_APP_SERVER || "localhost:3000";
@@ -19,6 +20,7 @@ export default function Chat() {
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [error, setError] = useState("");
   useEffect(() => {
     const { name, room } = location.state;
     socket = io(ENDPOINT, { transports: ["websocket"] });
@@ -28,7 +30,10 @@ export default function Chat() {
 
     socket.emit("join", { name, room }, (error) => {
       if (error) {
+        setError(error);
         alert(error);
+      } else {
+        setError("pass");
       }
     });
   }, [location.state]);
@@ -49,7 +54,7 @@ export default function Chat() {
     }
   };
 
-  return (
+  return error === "pass" ? (
     <div className="outerContainer">
       <div className="container">
         <InfoBar room={room} />
@@ -62,5 +67,7 @@ export default function Chat() {
       </div>
       <TextContainer users={users} />
     </div>
+  ) : (
+    <Join />
   );
 }
